@@ -14,5 +14,6 @@ export default function handler(
     res: NextApiResponse<Data[]>
 ) {
     const articles: Data[] = articlesData
+
     res.status(200).json(articles)
 }

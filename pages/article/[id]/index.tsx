@@ -25,7 +25,6 @@ export const getStaticProps: GetStaticProps = async ({ params }: GetStaticPropsC
         throw new Error("params === undefined");
     }
     const res = await fetch(`${server}/api/articles/${params.id}`)
-
     const article = await res.json()
 
     return { props: { article } };
