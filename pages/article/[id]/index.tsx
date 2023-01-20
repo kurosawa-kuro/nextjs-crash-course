@@ -21,11 +21,16 @@ const article = (props: {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }: GetStaticPropsContext) => {
-    const res = await fetch(`${server}/api/articles/${params!.id}`)
+    if (params === undefined) {
+        throw new Error("params === undefined");
+    }
+    // if (params) {
+    const res = await fetch(`${server}/api/articles/${params.id}`)
 
     const article = await res.json()
 
     return { props: { article } };
+    // }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
